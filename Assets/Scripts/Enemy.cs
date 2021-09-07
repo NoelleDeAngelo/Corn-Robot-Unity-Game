@@ -38,6 +38,14 @@ public class Enemy : MonoBehaviour
                 movingToStart = true;
             }
         }
-
     }
+
+    private void OnTriggerEnter (Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            other.GetComponent<Player>().GameOver();
+        }
+    }
+
 }
