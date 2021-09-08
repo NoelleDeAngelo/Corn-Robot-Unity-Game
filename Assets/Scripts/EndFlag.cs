@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndFlag : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string nestSceneName;
+    public bool lastLevel;
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter (Collider other)
     {
-        
+        if(other.CompareTag("Player"))
+        {
+            if(lastLevel)
+            {
+                Debug.Log("you win");
+            }
+            else
+            {
+                SceneManager.LoadScene(nestSceneName);
+            }
+        }
+
     }
 }
