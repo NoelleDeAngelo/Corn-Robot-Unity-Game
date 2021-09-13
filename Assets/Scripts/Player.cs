@@ -8,11 +8,24 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public Rigidbody rig;
     public float jumpForce;
-    public int score;
+    static int score;
     public UI ui;
 
     private bool isGrounded;
+    private int levelStartScore;
 
+    void Start()
+    {
+        levelStartScore = score;
+        if (score == 0)
+        {
+            ui.SetScoreText(0);
+        }
+        else
+        {
+            ui.SetScoreText(score);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -52,6 +65,7 @@ public class Player : MonoBehaviour
 
     public void GameOver ()
     {
+        score = levelStartScore;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -60,6 +74,11 @@ public class Player : MonoBehaviour
         score+= points;
         ui.SetScoreText(score);
 
+    }
+
+    public void SetScore(int value)
+    {
+        score = value;
     }
 }
 
