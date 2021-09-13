@@ -14,7 +14,7 @@ public class EndFlag : MonoBehaviour
         {
             if(lastLevel)
             {
-                Debug.Log("you win");
+                SceneManager.LoadScene(0);
             }
             else
             {
